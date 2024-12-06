@@ -1,0 +1,37 @@
+{% block title %}{% endblock %}
+
+{% block body %}
+    <link rel="stylesheet" href="{{ asset('public/app.css') }}">
+    <section class="about-section">
+<center>
+        <div class="center-text-container">
+            <div class="about-header">
+                <h1>À propos de Tounsi GSM</h1>
+            </div>
+            <a class="user-link" href="#">
+                <img class="media-object img-thumbnail user-img" alt="User Picture" src="{{ asset('maquette/asset/imgs/tounsi.jpg') }}"/>
+            </a>
+            <div class="about-content">
+                <h2>Bienvenue sur <strong>Tounsi GSM!</strong></h2>
+                <p>
+                    Votre partenaire de confiance pour tous vos besoins en téléphones mobiles, accessoires et technologies GSM.</p>
+                    <p>Nous nous engageons à vous offrir des produits de qualité à des prix compétitifs, tout en garantissant un
+                    service client exceptionnel.
+                </p>
+                <p>
+                    Que vous recherchiez le dernier smartphone, des accessoires tendance ou des solutions de réparation,
+                    <strong>Tounsi GSM</strong> est là pour vous accompagner à chaque étape.
+                </p>
+                <div class="mission">
+                    <h3>Notre mission :</h3>
+                    <p>
+                        Fournir les meilleurs produits et services pour vous connecter au monde, en toute simplicité.
+                    </p>
+                </div>
+            </div>
+
+
+        </div>
+</center>
+    </section>
+{% endblock %}

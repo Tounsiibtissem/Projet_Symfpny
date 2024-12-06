@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commande index{% endblock %}
+{% block etiquette %}Commandes{% endblock %}
+{% block section %}Liste des commandes{% endblock %}
+{% block body %}
+    <h1>Commande index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Status</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commande in commandes %}
+            <tr>
+                <td>{{ commande.id }}</td>
+                <td>{{ commande.status }}</td>
+                <td>
+                    <a href="{{ path('app_commande_show', {'id': commande.id}) }}" class="btn btn-primary">show</a>
+                    <a href="{{ path('app_commande_edit', {'id': commande.id}) }}" class="btn btn-warning">edit</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

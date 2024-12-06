@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit LignedeCommande{% endblock %}
+
+{% block body %}
+    <h1>Edit LignedeCommande</h1>
+
+    {{ include('lignede_commande/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_lignede_commande_index') }}">back to list</a>
+
+    {{ include('lignede_commande/_delete_form.html.twig') }}
+{% endblock %}

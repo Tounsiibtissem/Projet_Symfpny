@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin - Statistics{% endblock %}
+
+{% block body %}
+    <h1>Statistics Dashboard</h1>
+
+    <div class="stats-section">
+        <div>Total Products: {{ totalProducts }}</div>
+        <div>Total Brands: {{ totalBrands }}</div>
+    </div>
+
+    <div class="sales-section">
+        <h2>Sales Data</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Month</th>
+                <th>Total Sales</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for sale in salesData %}
+                <tr>
+                    <td>{{ sale.month }}</td>
+                    <td>{{ sale.totalSales }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="salesChart" width="10" height="5"></canvas>
+    </div>
+
+    <style>
+        .chart-container {
+            max-width: 20px;
+            margin: 0 auto;
+        }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('salesChart').getContext('2d');
+
+        const salesChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: {{ salesData|map(sale => sale.month)|json_encode|raw }},
+                datasets: [{
+                    label: 'Total Sales',
+                    data: {{ salesData|map(sale => sale.totalSales)|json_encode|raw }},
+                    borderColor: 'rgba(75, 70, 70, 1)',
+                    borderWidth: 2,
+                    fill: false,
+                }]
+            },
+            options: {
+                responsive: true, // Graphique responsive
+                maintainAspectRatio: false, // Désactive le maintien du ratio d'aspect
+                scales: {
+                    y: {
+                        beginAtZero: true, // Commence l'axe Y à 0
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                    },
+                },
+            }
+        });
+    </script>
+
+{% endblock %}
